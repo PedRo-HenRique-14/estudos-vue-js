@@ -1,11 +1,18 @@
 <template>
   <div>
+    <h1>The Ultimate ToDo List</h1>
     <div 
       v-for="(obj, index) in todos"
-      v-bind:key="obj.id"
+      :key="obj.id"
       class="todo-item"
     >
-      {{ index + 1 }} - {{ obj.title }}
+      <img 
+        v-bind:src="obj.imgSrc" 
+        :alt="obj.imgAlt"
+        v-if="obj.imgSrc"
+        >
+      <span>{{ index + 1 }} - {{ obj.title }}</span>
+      <span class="status" v-show="obj.completed">Finalizado</span>
     </div>
   </div>
 </template>
@@ -16,37 +23,45 @@ export default {
   data() {
     return {
       todos: [
-  {
-    "userId": 1,
-    "id": 1,
-    "title": "delectus aut autem",
-    "completed": false
-  },
-  {
-    "userId": 1,
-    "id": 2,
-    "title": "quis ut nam facilis et officia qui",
-    "completed": false
-  },
-  {
-    "userId": 1,
-    "id": 3,
-    "title": "fugiat veniam minus",
-    "completed": false
-  },
-  {
-    "userId": 1,
-    "id": 4,
-    "title": "et porro tempora",
-    "completed": true
-  },
-  {
-    "userId": 1,
-    "id": 5,
-    "title": "laboriosam mollitia et enim quasi adipisci quia provident illum",
-    "completed": false
-  }
-]
+        {
+          "userId": 1,
+          "id": 1,
+          "title": "delectus aut autem",
+          "completed": false,
+          imgSrc: "https://placehold.co/50",
+          imgAlt: "Essa com certeza é uma foto!",
+        },
+        {
+          "userId": 1,
+          "id": 2,
+          "title": "quis ut nam facilis et officia qui",
+          "completed": false,
+          imgSrc: "https://placehold.co/50",
+          imgAlt: "Essa com certeza é uma foto!",
+        },
+        {
+          "userId": 1,
+          "id": 3,
+          "title": "fugiat veniam minus",
+          "completed": false,
+        },
+        {
+          "userId": 1,
+          "id": 4,
+          "title": "et porro tempora",
+          "completed": true,
+          imgSrc: "https://placehold.co/50",
+          imgAlt: "Essa com certeza é uma foto!",
+        },
+        {
+          "userId": 1,
+          "id": 5,
+          "title": "laboriosam mollitia et enim quasi adipisci quia provident illum",
+          "completed": false,
+          imgSrc: "https://placehold.co/50",
+          imgAlt: "Essa com certeza é uma foto!",
+        }
+      ],
     }
   }
 }
@@ -63,9 +78,19 @@ export default {
   margin-top: 60px;
 }
 .todo-item{
+  align-items: center;
   background-color: black;
   color: white;
+  display: flex;
+  gap: 20px;
   margin: 10px;
   padding: 15px;
+}
+.status {
+  background-color: green;
+  display: block;
+  height: 20px;
+  justify-self: flex-end;
+  padding: 5px 10px;
 }
 </style>
