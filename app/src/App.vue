@@ -1,6 +1,12 @@
 <template>
-  <div>
-    <h1>The Ultimate ToDo List</h1>
+  <div class="container">
+    <h1 :class="{ 'title': true, 'title-main': isMain }">The Ultimate ToDo List</h1>
+    <p :class="pClass">
+      Lorem ipsum dolor, sit amet consectetur adipisicing elit. Deserunt, eos quasi iste veritatis obcaecati, aspernatur quis laborum atque eaque cumque nam voluptate quaerat tempore sint id, provident eum! Animi, aperiam.
+    </p>
+    <p :style="pStyle">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio eius porro et molestiae non omnis dolorum necessitatibus quasi repudiandae eligendi tempore minus magni beatae, tenetur saepe. At laudantium inventore tempora.
+    </p>
     <div 
       v-for="(obj, index) in todos"
       :key="obj.id"
@@ -22,6 +28,10 @@ export default {
   name: 'App',
   data() {
     return {
+      isMain: true,
+      classVar: "",
+      pClass: ['text', 'title'],
+      pStyle: {'color': 'brown', 'fontSize': '18px', textAlign: 'center'},
       todos: [
         {
           "userId": 1,
@@ -76,6 +86,18 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
   margin-top: 60px;
+}
+.container {
+  width: 50%;
+}
+.title-main {
+  font-size: 50px;
+}
+.title {
+  text-align: center;
+}
+.text {
+  font-size: 18px
 }
 .todo-item{
   align-items: center;
