@@ -1,4 +1,5 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 
-createApp(App).mount('#app')
+// Atribui uma instância do App na variável global window.app 
+window.app = createApp(App).mount('#app')

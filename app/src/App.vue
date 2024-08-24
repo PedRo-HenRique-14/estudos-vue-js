@@ -1,18 +1,29 @@
 <template>
   <div>
-    <button @click="onClick">Enviar</button>
-    <br>
-    <div @mouseover="mouseOver" @mouseout="mouseOut">
-      Mouse over
-    </div>
-    <br><br>
-    <form 
-      action="https://google.com"
-      @submit.prevent="submitForm"
+    {{ fullName }} <br><br>
+    <h2>Todos incompletas</h2>
+    <div
+      v-for="todo in incompleteTodos"
+      :key="todo.id"
     >
-      <input type="text" @keyup="onKeyUp">
-      <button type="submit">Enviar</button>
-    </form>
+      <input 
+        type="checkbox"
+        v-model="todo.completed"
+        >
+      {{ todo.title }}
+    </div>
+
+    <h2>Todos completas</h2>
+    <div
+      v-for="todo in completeTodos"
+      :key="todo.id"
+    >
+      <input 
+        type="checkbox"
+        v-model="todo.completed"
+        >
+      {{ todo.title }}
+    </div>
   </div>
 </template>
 
@@ -21,25 +32,60 @@ export default {
   name: 'App',
   data() {
     return {
-      
+      user: {
+        firstName: 'Pedro',
+        lastName: 'Henrique',
+      },
+      todos: [
+        {
+          "userId": 1,
+          "id": 1,
+          "title": "delectus aut autem",
+          "completed": false
+        },
+        {
+          "userId": 1,
+          "id": 2,
+          "title": "quis ut nam facilis et officia qui",
+          "completed": false
+        },
+        {
+          "userId": 1,
+          "id": 3,
+          "title": "fugiat veniam minus",
+          "completed": false
+        },
+        {
+          "userId": 1,
+          "id": 4,
+          "title": "et porro tempora",
+          "completed": true
+        },
+        {
+          "userId": 1,
+          "id": 5,
+          "title": "laboriosam mollitia et enim quasi adipisci quia provident illum",
+          "completed": false
+        }
+      ],
+    }
+  },
+  /* Computed são funções cacheadas, as quais são recomputadas apenas quando houver alteração de valor das dependencias (ex: variável).
+   * Diferentemente dos methods, onde toda vez que uma função é chamada ela é recomputada.
+   */
+  computed: {
+    fullName() {
+      return `${this.user.firstName} ${this.user.lastName}`
+    },
+    incompleteTodos() {
+      return this.todos.filter(todo => !todo.completed)
+    },
+    completeTodos() {
+      return this.todos.filter(todo => todo.completed)
     }
   },
   methods: {
-    onClick(evt) {
-      console.log('Olha o click!', evt)
-    },
-    mouseOver(evt) {
-      console.log('Mouse over!!!', evt)
-    },
-    mouseOut(evt) {
-      console.log('Mouse out!!!', evt)
-    },
-    submitForm(evt) {
-      console.log('Form Enviado!!!', evt)
-    },
-    onKeyUp(evt) {
-      console.log( `${evt.key} key up!!!`, evt)
-    },
+
   },
 }
 </script>
