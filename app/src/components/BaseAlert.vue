@@ -1,6 +1,10 @@
 <template>
     <div :class="baseClass">
         <slot/>
+
+        <button class="close-button" @click="onClick">
+            X
+        </button>
     </div>
 </template>
 
@@ -21,17 +25,37 @@
                 ]
             },
         },
+
+        methods: {
+            onClick() {
+                this.$emit('close') // Cria um evento que pode ser detectado pelo componente pai
+                console.log("Botão clicado!")
+            },
+        },
     }
 </script>
 
 <style scoped>
 .alert {
+    align-items: center;
     background-color: #303030;
     border-radius: 5px;
     color: white;
+    display: flex;
+    justify-content: space-between;
     padding: 10px;
-    text-align: center;
 }
+
+.close-button {
+    background-color: #ffffff00;
+    border: none;
+    color: white;
+}
+
+.close-button:hover {
+    cursor: pointer;
+}
+
 .success {
     background-color: #3f5c2f;
 }
