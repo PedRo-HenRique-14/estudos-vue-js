@@ -2,6 +2,7 @@
   <nav>
     <router-link to="/">Home</router-link> |
     <router-link :to="dinamicRoute">Services</router-link> |
+    <router-link to="/user/10">Usuário</router-link> |
     <router-link to="/about">About</router-link>
   </nav>
   <router-view/>
