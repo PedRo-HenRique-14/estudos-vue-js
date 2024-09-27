@@ -1,16 +1,16 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
+  <AppProducts/>
+  <br><br>
   <button @click="saveUser">Save User</button>
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import AppProducts from '@/components/products/AppProducts.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    AppProducts,
   },
   methods: {
     saveUser() {
