@@ -15,6 +15,13 @@ export default createStore({
     products: [], // É possível inserir arrays no state
   },
   mutations: {
+    /*
+     * Camada mutation atualiza os dados armazenados na camada state. Isso é feito atraves de funções
+     */
+
+    storeUser(state, data) {
+      state.user = data
+    },
   },
   actions: {
   },
