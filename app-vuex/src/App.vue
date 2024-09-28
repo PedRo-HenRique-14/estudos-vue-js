@@ -11,6 +11,8 @@
     </div>
   </div>
   <br><br>
+  {{ $store.state.user.first_name }} {{ $store.state.user.last_name }} <br>
+  {{ $store.state.user.email }} <br>
   <button @click="saveUser">Save User</button>
 </template>
 
@@ -29,7 +31,8 @@ export default {
         last_name: 'Pedro',
         email: 'email@example.com',
       }
-      this.$store.commit('storeUser', newUser) // Chama a função storeUser da camada mutation no index.js, passando como parametro a constante newUser
+      //this.$store.commit('storeUser', newUser) // Chama a função storeUser da camada mutation no index.js, passando como parametro a constante newUser
+      this.$store.dispatch('storeUser', newUser) // dispatch chama as actions
     },
   },
   data() {
