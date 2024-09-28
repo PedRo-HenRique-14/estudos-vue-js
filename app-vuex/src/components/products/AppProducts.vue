@@ -6,15 +6,6 @@
             :product="product"
         />
     </div>
-    <div>
-        <h2>Cart</h2>
-        <div
-            v-for="product in $store.state.cart"
-            :key="product.id"
-        >
-            {{ product.name }}
-        </div>
-    </div>
 </template>
 
 <script>
