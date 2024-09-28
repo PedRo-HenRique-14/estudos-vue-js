@@ -45,8 +45,17 @@ export default createStore({
       state.cart.splice(idx, 1)
     },
   },
-  actions: {
-  },
   getters: {
+    /*
+     * Funciona semelhante ao computed. Se a dependencia se alterar, a função é recomputada
+     */
+
+    totalCost(state) {
+      //dependencia
+      // retorna um valor
+      return state.cart.reduce((totalCost, item) => totalCost += item.price, 0)
+    },
+  },
+  actions: {
   },
 })

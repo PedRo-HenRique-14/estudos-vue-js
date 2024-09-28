@@ -1,5 +1,15 @@
 <template>
   <AppProducts/>
+  <div>
+    <h2>Carrinho</h2>
+    <h3>Custo total: R${{ $store.getters.totalCost }}</h3>
+    <div
+      v-for="product in $store.state.cart"
+      :key="product.id"
+    >
+      {{ product.name }}
+    </div>
+  </div>
   <br><br>
   <button @click="saveUser">Save User</button>
 </template>

@@ -1,6 +1,6 @@
 <template>
     <div class="card">
-        {{ product.name }} - {{ product.price }} <br>
+        {{ product.name }} - R${{ product.price }} <br>
         <button @click="addToCart">Adicionar ao Carrinho</button> <br>
         <button 
             @click="removeFromCart"
