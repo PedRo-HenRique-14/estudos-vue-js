@@ -37,6 +37,10 @@ export default createStore({
      * Camada mutation atualiza os dados armazenados na camada state. Isso é feito atraves de funções
      */
 
+    storeUser(state, data) {
+      state.user = data
+    },
+
     addToCart(state, data) {
       state.cart.push(data)
     },
@@ -57,5 +61,13 @@ export default createStore({
     },
   },
   actions: {
+    /*
+     * Funciona semelhante as mutations. Por aqui as funções terão acesso ao contexto (state, mutations, getrters e outras actions)
+     * O ideal é não alterar o state pelas actions. Deve-se chamar uma função da mutation, para a mutation alterar o state
+     */
+
+    storeUser(context, data) {
+      context.commit('storeUser', data)
+    },
   },
 })
